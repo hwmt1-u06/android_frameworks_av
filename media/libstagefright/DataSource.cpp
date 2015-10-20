@@ -189,7 +189,7 @@ void DataSource::RegisterDefaultSniffers() {
     RegisterSniffer_l(SniffAAC);
     RegisterSniffer_l(SniffMPEG2PS);
     RegisterSniffer_l(SniffWVM);
-#ifdef ENABLE_AV_ENHANCEMENTS
+#ifdef QCOM_HARDWARE
     RegisterSniffer_l(ExtendedExtractor::Sniff);
 #endif
     RegisterSnifferPlugin();
@@ -199,6 +199,7 @@ void DataSource::RegisterDefaultSniffers() {
             && (!strcmp(value, "1") || !strcasecmp(value, "true"))) {
         RegisterSniffer_l(SniffDRM);
     }
+    gSniffersRegistered = true;
 }
 
 void DataSource::RegisterSnifferPlugin() {
